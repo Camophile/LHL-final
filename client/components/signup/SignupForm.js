@@ -1,6 +1,6 @@
 import React from 'react';
 import timezones from '../../data/timezones';
-import map from 'lodash/map';
+// import map from 'lodash/map';
 import classnames from 'classnames';
 import validateInput from '../../../server/shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -48,7 +48,7 @@ class SignupForm extends React.Component {
         let errors = this.state.errors;
         let invalid;
         if (res.data.user) {
-          errors[field] = 'There is user with such ' + field;
+          errors[field] = 'User with ${field} exists';
           invalid = true;
         } else {
           errors[field] = '';

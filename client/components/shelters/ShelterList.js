@@ -23,7 +23,7 @@ class ShelterList extends React.Component {
                 <div className = "panel-body">
                   <dl>
                     <dt>Description:</dt>
-                    <dd>{shelter.notes}</dd>
+                    <dd>{shelter.description}</dd>
                   </dl>
                 </div>
               </div>

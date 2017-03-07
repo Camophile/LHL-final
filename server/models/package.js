@@ -1,7 +1,11 @@
 import bookshelf from '../bookshelf';
+// import ShelterForm from './ShelterForm';
 
 const Package = bookshelf.Model.extend({
-  tableName: 'package'
+  tableName: 'package',
+  shelter: function() {
+    return this.belongsToMany(ShelterForm);
+  }
 });
 
 export default Package;

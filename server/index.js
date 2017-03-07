@@ -25,7 +25,7 @@ import { getAllGroceries } from './models/grocery';
 import { getAllShelters } from './models/shelter'
 import { getAllBoxes } from './models/box';
 import { getAllGroceryAvailabilities } from './models/groceryAvailability';
-import { deliveryValidate } from './models/ShelterForm';
+// import { deliveryValidate, getUserData } from './models/ShelterForm';
 
 
 let app = express();
@@ -57,12 +57,14 @@ app.get('/default_state.js', (req, res) => {
   Promise.all([
     getAllGroceries(),
     getAllShelters(),
-    getAllBoxes()
-  ]).then(([groceries, shelters, boxes]) => {
+    getAllBoxes(),
+    // getUserData()
+  ]).then(([groceries, shelters, boxes, transporter]) => {
     var state = {
       groceries,
       shelters,
-      boxes
+      boxes,
+      transporter
     };
     res.set('Content-Type', 'application/javascript');
     res.send(`var __DEFAULT_STATE = ${JSON.stringify(state)};`);

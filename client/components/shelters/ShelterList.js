@@ -10,6 +10,7 @@ class ShelterList extends React.Component {
   render() {
     console.log(this.props.shelters);
     // console.log(this.props.selectedShelter);
+    // const { notes } = this.props.shelter
     return (
       <div>
         {this.props.shelters.map(shelter => (
@@ -21,8 +22,8 @@ class ShelterList extends React.Component {
                 <img className="panel-img" src={`/pictures/shelters/${shelter.picture}`} alt="Shelter Image"/>
                 <div className = "panel-body">
                   <dl>
-                    <dt>Drop-off hours:</dt>
-                    <dd></dd>
+                    <dt>Description:</dt>
+                    <dd>{shelter.notes}</dd>
                   </dl>
                 </div>
               </div>

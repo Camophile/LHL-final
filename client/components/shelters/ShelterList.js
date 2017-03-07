@@ -22,7 +22,7 @@ class ShelterList extends React.Component {
                 <div className = "panel-body">
                   <dl>
                     <dt>Drop-off hours:</dt>
-                    <dd></dd>
+                    <dd>{shelter.notes}</dd>
                   </dl>
                 </div>
               </div>

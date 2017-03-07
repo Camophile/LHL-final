@@ -91,22 +91,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-
-//   const store = state.groceries[0].find(x=> x.id === state.selectedStore);
-
-//   return { store };
-// }
-
-// PackageDetails.propTypes = {
-//   postPackageData: React.PropTypes.func.isRequred
-// }
-
-// PackageDetails.contextTypes = {
-//   router: React.PropTypes.object.isRequired
-// }
-
-
-
 export default connect(mapStateToProps, mapDispatchToProps)(PackageDetails);
-
-// export default connect(PackageDetails);

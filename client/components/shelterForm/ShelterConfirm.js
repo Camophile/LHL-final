@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postDeliveredAt } from '../../actions/shelterConfirmActions';
 import { routeTo } from '../../routes';
-import TextFieldGroup from '../common/TextFieldGroup';
+// import TextFieldGroup from '../common/TextFieldGroup';
 import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class ShelterForm extends React.Component {
@@ -14,6 +14,16 @@ class ShelterForm extends React.Component {
       type: 'success',
       text: 'Message received!'
     });
+  }
+
+  fetchDeliveryData(infoType, businessType, deliveryID) {
+    let result;
+    businessType.forEach(business => {
+      if (business.id === deliveryId) {
+        result = business[infoType];
+      }
+    });
+    return result;
   }
 
   render() {
@@ -36,7 +46,7 @@ class ShelterForm extends React.Component {
           </thead>
           <tbody>
             <tr scope="row">
-              <td>Charles Mingus</td>
+              <td>{this.props.transporter}</td>
               <td>IGA</td>
               <td>2</td>
               <td>2</td>
@@ -54,12 +64,20 @@ class ShelterForm extends React.Component {
 }
 
 ShelterForm.propTypes = {
-  addFlashMessage: React.PropTypes.func.isRequired
+  addFlashMessage: React.PropTypes.func.isRequired,
+  auth: React.PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state) => {
-  packages: state.packages
-}
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  packages: state.packages,
+  groceries: state.groceries,
+  shelters: state.shelters,
+  transporter: state.transporter,
+  deliveryGrocery: state.currentDelivery.deliveryGrocery,
+  deliveryShelter: state.currentDelivery.deliveryShelter,
+  currentDelivery: state.currentDelivery
+});
 
 function mapDispatchToProps(dispatch){
   return {
@@ -71,5 +89,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-
-export default connect(null, mapDispatchToProps)(ShelterForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ShelterForm);

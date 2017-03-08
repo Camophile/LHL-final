@@ -1,10 +1,14 @@
 import bookshelf from '../bookshelf';
-// import ShelterForm from './ShelterForm';
+import Shelter from './Shelter';
+import User from './User';
 
 const Package = bookshelf.Model.extend({
   tableName: 'package',
   shelter: function() {
-    return this.belongsToMany(ShelterForm);
+    return this.belongsTo(Shelter, 'shelter_id');
+  },
+  user() {
+    return this.belongsTo(User, 'users_id');
   }
 });
 
@@ -19,9 +23,13 @@ export function insertPackages(data) {
 
 export function deliveryValidate(data) {
   return Package.query({
-    where: {id: 2}
+    where: { id: 2 }
     }).save(
     { delivered_at: new Date().toISOString() },
     { method: 'update' }
   );
 }
+
+// Package.fetchAll().then(packages => {
+//   console.log("User", packages.at(0).related('user'));
+// })

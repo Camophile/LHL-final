@@ -4,7 +4,6 @@ import App from './components/App';
 import Landing from './components/Landing';
 import SignupPage from './components/signup/SignupPage';
 import LoginPage from './components/login/LoginPage';
-import NewEventPage from './components/events/NewEventPage';
 import PackagePage from './components/package/PackagePage';
 import GroceriesPage from './components/groceries/GroceriesPage';
 import SheltersPage from './components/shelters/SheltersPage';
@@ -24,7 +23,6 @@ export default (
     <Route path="signup" component={SignupPage} />
     <Route path="login" component={LoginPage} />
     <Route path="package" component={PackagePage} />
-    <Route path="new-event" component={requireAuth(NewEventPage)} />
     <Route path="groceries" component={GroceriesPage} />
     <Route path="shelters" component={SheltersPage} />
     <Route path="boxes" component={BoxesPage} />

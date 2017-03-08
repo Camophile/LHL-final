@@ -15,7 +15,7 @@ function validateInput(data, otherValidations) {
   }).fetch().then(user => {
     if (user) {
       if (user.get('email') === data.email) {
-        errors.email = 'There is user with such email';
+        errors.email = 'This email already exists';
       }
     }
     return {

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { CONFIRM_DELIVERY } from './types';
+import { GET_SHELTER_DETAILS } from './types';
 
-export function postDeliveredAt(data) {//data) {
+export function postDeliveredAt(data) {
   return dispatch => {
-    return axios.post('/api/shelter-form', data) //, data)
+    return axios.post('/api/shelter-form', data)
     .then(res => {
       // console.log("in the postPackageData function");
       // console.log('data', data)
@@ -17,4 +17,17 @@ export function postDeliveredAt(data) {//data) {
       // res.data.forEach(p => dispatch(setPackage(p)));
     })
   }
+}
+
+export function getShelterData(data) {
+  return dispatch => {
+    return axios.get('/api/shelterform', data)
+  }
+}
+
+export function getShelterDetails(shelter) {
+  return {
+    type: GET_SHELTER_DETAILS,
+    shelter
+  };
 }

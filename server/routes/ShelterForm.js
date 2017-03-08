@@ -8,4 +8,8 @@ router.post('/', (req, res) => {
   deliveryValidate(req.body).then(x => res.json(x));
 })
 
+router.get('/', () => {
+  getScheduledPackages();
+})
+
 export default router;

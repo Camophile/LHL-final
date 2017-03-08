@@ -18,9 +18,9 @@ import boxes from './routes/boxes';
 import shelter_form from './routes/ShelterForm';
 import notifications from './routes/notifications';
 
-import { getAllPackages } from './models/package';
+import { getScheduledPackages } from './models/package';
 import { getAllGroceries } from './models/grocery';
-import { getAllShelters, getScheduledPackages } from './models/shelter' //// deleted `deliveryValidate`
+import { getAllShelters } from './models/shelter' //// deleted `deliveryValidate`
 import { getAllBoxes } from './models/box';
 import { getAllGroceryAvailabilities } from './models/groceryAvailability';
 

@@ -1,14 +1,22 @@
 import bookshelf from '../bookshelf';
 import Shelter from './Shelter';
 import User from './User';
+import Box from './Box';
+import Grocery from './grocery';
 
 const Package = bookshelf.Model.extend({
   tableName: 'package',
   shelter: function() {
-    return this.belongsTo(Shelter, 'shelter_id');
+    return this.belongsTo(Shelter);
   },
   user() {
     return this.belongsTo(User, 'users_id');
+  },
+  box: function() {
+    return this.hasMany(Box)
+  },
+  grocery: function(){
+    return this.hasOne(Grocery).through(Box, 'id');
   }
 });
 
@@ -30,6 +38,19 @@ export function deliveryValidate(data) {
   );
 }
 
-// Package.fetchAll().then(packages => {
-//   console.log("User", packages.at(0).related('user'));
-// })
+export function getScheduledPackages() {
+
+  // return qb.where(knex.raw(query));
+
+  return Package.forge({id: 1})
+  // .fetchAll().then(function(x) {
+  //   console.log("Package fetchAll", x.toJSON())
+  // })
+  .fetch({ withRelated: ['shelter', 'box', 'user', 'grocery'] })
+  .then(function(packages) {
+    console.log(packages.toJSON());
+    return packages.toJSON();
+  }).catch(function(err) {
+    console.error(err);
+  });
+}

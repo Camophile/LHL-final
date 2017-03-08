@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { CONFIRM_DELIVERY } from './types';
+import { GET_SHELTER_DETAILS } from './types';
 
 export function postDeliveredAt(data) {
   return dispatch => {
@@ -19,8 +19,15 @@ export function postDeliveredAt(data) {
   }
 }
 
-export function getTransporterData(data) {
+export function getShelterData(data) {
   return dispatch => {
     return axios.get('/api/shelterform', data)
   }
+}
+
+export function getShelterDetails(shelter) {
+  return {
+    type: GET_SHELTER_DETAILS,
+    shelter
+  };
 }

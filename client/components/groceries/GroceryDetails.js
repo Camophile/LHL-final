@@ -12,16 +12,7 @@ class GroceryDetails extends React.Component {
 
   render() {
     if(!this.props.grocery) {
-      return (
-      <div className = "panel panel-default">
-         <div className = "panel-heading">
-          Grocery Store Details
-         </div>
-         <div className = "panel-body">
-          Please select a grocery store.
-         </div>
-      </div>
-      );
+      return <div>Pick a grocery Store</div>;
     }
 
     const { name, location, notes, phone_number, id } = this.props.grocery;

@@ -2,11 +2,19 @@ import axios from 'axios';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { SET_CURRENT_USER } from './types';
+import { SET_USER_POINTS } from './types';
 
 export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,
     user
+  };
+}
+
+export function setUserPoints(user) {
+  return {
+    type: SET_USER_POINTS,
+    pointTotal: user.reward_points
   };
 }
 
@@ -25,6 +33,7 @@ export function login(data) {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwtDecode(token)));
+      dispatch(setUserPoints(jwtDecode(token)));
     });
   }
 }

@@ -17,6 +17,8 @@ import shelters from './routes/shelters';
 import boxes from './routes/boxes';
 import shelter_form from './routes/ShelterForm';
 import notifications from './routes/notifications';
+import points from './routes/points';
+
 
 import { getScheduledPackages } from './models/package';
 import { getAllGroceries } from './models/grocery';
@@ -39,6 +41,7 @@ app.use('/api/shelter-form', shelter_form);
 app.use('/api/shelters', shelters);
 app.use('/api/boxes', boxes);
 app.use('/api/notifications', notifications);
+app.use('/api/points', points);
 
 const compiler = webpack(webpackConfig);
 

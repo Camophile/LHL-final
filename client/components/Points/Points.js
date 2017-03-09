@@ -5,7 +5,7 @@ class Points extends React.Component {
 
   showPoints(points) {
     if (!points) {
-      return 0;
+      return this.props.auth.user.reward_points;
     } else {
       return points;
     }
@@ -28,8 +28,11 @@ class Points extends React.Component {
   }
 }
 
+
 const mapStateToProps = (state) => ({
-  reward_points: state.auth.user.reward_points
+  auth: state.auth,
+  reward_points: state.userPoints,
+  redeem: state.redeem
 });
 
 export default connect(mapStateToProps)(Points);

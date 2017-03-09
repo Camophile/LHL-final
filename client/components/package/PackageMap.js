@@ -33,10 +33,13 @@ class PackageMap extends React.Component {
   }
 
   render() {
-    const mapStyle = {width:"100%", height:300};
+    const mapStyle = {width:"100%", height:"400px"};
     return (
-      <div className="col-md-12">
-        <div className="panel panel-default">
+      <div className="map panel panel-default">
+        <div className="panel-heading">
+          Directions
+        </div>
+        <div className="panel-body">
           <div id="map" style={mapStyle} />
         </div>
       </div>

@@ -8,9 +8,6 @@ class ShelterList extends React.Component {
   }
 
   render() {
-    console.log(this.props.shelters);
-    // console.log(this.props.selectedShelter);
-    // const { notes } = this.props.shelter
     return (
       <div>
         {this.props.shelters.map(shelter => (

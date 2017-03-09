@@ -1,7 +1,6 @@
 import { INCREMENT_PRODUCE, DECREMENT_PRODUCE, INCREMENT_DAIRY, DECREMENT_DAIRY, INCREMENT_BAKED_GOODS, DECREMENT_BAKED_GOODS, ALL_PRODUCE, ALL_DAIRY, ALL_BAKED_GOODS } from './types';
 
 export function incrementProduce() {
-  console.log('action creator hit');
     return {
         type: INCREMENT_PRODUCE
     }

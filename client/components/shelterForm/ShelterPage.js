@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class ShelterPage extends React.Component {
+
   render() {
     const { addFlashMessage } = this.props;
     return (

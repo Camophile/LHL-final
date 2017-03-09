@@ -65,7 +65,7 @@ class BoxList extends React.Component {
 
   productType() {
     let type = this.props.type;
-    
+
     if(type === 'Produce'){
       return this.props.produce
     } else if(type === 'Dairy'){
@@ -97,18 +97,20 @@ class BoxList extends React.Component {
             </div>
             <img src={this.imageType(this.props.type)} alt="Box Image"/>
             <div className = "panel-body">
-              <dl>
-                <dt>Boxes Available:</dt>
-                <dd>
-                  {this.boxQuantity(this.props.boxes, this.props.type, this.props.groceryId)}
-                </dd>
-                <dt>Boxes Selected:</dt>
-                  <dd>{this.productType()}</dd>
-              </dl>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <span className="badge">{this.boxQuantity(this.props.boxes, this.props.type, this.props.groceryId) - this.productType()}</span>
+                  Boxes Available
+                </li>
+                <li className="list-group-item">
+                  <span className="badge">{this.productType()}</span>
+                  Boxes Selected
+                </li>
+              </ul>
             </div>
             <div className="panel-footer">
               <div className="text-center">
-                <div className="btn-group" role="group" aria-label="...">
+                <div className="btn-group btn-group-lg" role="group" aria-label="...">
                   <button type="button" className="btn btn-default" onClick={this.decrement}>-</button>
                   <button type="button" className="btn btn-default" onClick={this.all}>All</button>
                   <button type="button" className="btn btn-default" onClick={this.increment}>+</button>

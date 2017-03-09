@@ -13,7 +13,16 @@ class ShelterDetails extends React.Component {
 
   render() {
     if(!this.props.shelter) {
-      return <div>Pick a shelter</div>;
+      return (
+        <div className = "panel panel-default">
+           <div className = "panel-heading">
+            Shelter Details
+           </div>
+           <div className = "panel-body">
+            Please select a shelter.
+           </div>
+        </div>
+      );
     }
 
     const { name, location, notes, phone_number, id } = this.props.shelter;

@@ -41,8 +41,15 @@ footer {
   margin: 50px 0;
 }
 
+
 .grocery-panel {
   width: 260px;
+
+.shelter-grocery-pnl {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 210px;
 }
 
 .img-center {

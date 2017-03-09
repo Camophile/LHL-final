@@ -19,14 +19,12 @@ import shelter_form from './routes/ShelterForm';
 import notifications from './routes/notifications';
 import points from './routes/points';
 
-
+import { getScheduledPackages } from './models/package';
 import { getAllPackages } from './models/package';
 import { getAllGroceries } from './models/grocery';
 import { getAllShelters } from './models/shelter'
 import { getAllBoxes } from './models/box';
 import { getAllGroceryAvailabilities } from './models/groceryAvailability';
-// import { deliveryValidate, getUserData } from './models/ShelterForm';
-
 
 let app = express();
 
@@ -58,13 +56,13 @@ app.get('/default_state.js', (req, res) => {
     getAllGroceries(),
     getAllShelters(),
     getAllBoxes(),
-    // getUserData()
-  ]).then(([groceries, shelters, boxes, transporter]) => {
+    getScheduledPackages()
+  ]).then(([groceries, shelters, boxes, packages]) => {
     var state = {
       groceries,
       shelters,
       boxes,
-      transporter
+      packages
     };
     res.set('Content-Type', 'application/javascript');
     res.send(`var __DEFAULT_STATE = ${JSON.stringify(state)};`);

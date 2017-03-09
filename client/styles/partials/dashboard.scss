@@ -37,36 +37,12 @@ body {
   }
 }
 
-
-$line-height: 2;
-$lines-to-show: 3;
-
-.panel-body {
-  display: block; /* Fallback for non-webkit */
-  display: -webkit-box;
-  max-width: 400px;
-  height: $line-height*$lines-to-show; /* Fallback for non-webkit */
-  margin: 0 auto;
-  line-height: $lines-to-show;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.shelter-grocery-pnl {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 210px;
-
 footer {
   margin: 50px 0;
 }
 
 .grocery-panel {
   width: 260px;
-
 }
 
 .img-center {
@@ -112,5 +88,3 @@ main {
   text-overflow: ellipsis;
   max-width: 260px;
 }
-
-

@@ -25,7 +25,7 @@ export default combineReducers({
   selectedShelter,
   boxes,
   currentDelivery,
-  packages: shelterConfirm,
+  // packages: shelterConfirm,
   produce: produceReducer,
   dairy: dairyReducer,
   bakedGoods: bakedGoodsReducer,

@@ -37,8 +37,6 @@ class ShelterDetails extends React.Component {
           <dl>
             <dt>Shelter name:</dt>
             <dd>{name}</dd>
-            <dt>Pickup hours:</dt>
-            <dd></dd>
             <dt>Address:</dt>
             <dd>{location}</dd>
             <dt>Phone number:</dt>

@@ -19,8 +19,8 @@ class ShelterList extends React.Component {
                 <img className="panel-img" src={`/pictures/shelters/${shelter.picture}`} alt="Shelter Image"/>
                 <div className = "panel-body">
                   <dl>
-                    <dt>Drop-off hours:</dt>
-                    <dd>8:30am - 5:30pm</dd>
+                    <dt>Description:</dt>
+                    <dd>{shelter.description}</dd>
                   </dl>
                 </div>
               </div>

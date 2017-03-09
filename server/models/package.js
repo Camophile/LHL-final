@@ -40,15 +40,9 @@ export function deliveryValidate(data) {
 
 export function getScheduledPackages() {
 
-  // return qb.where(knex.raw(query));
-
   return Package.forge({id: 1})
-  // .fetchAll().then(function(x) {
-  //   console.log("Package fetchAll", x.toJSON())
-  // })
   .fetch({ withRelated: ['shelter', 'box', 'user', 'grocery'] })
   .then(function(packages) {
-    console.log(packages.toJSON());
     return packages.toJSON();
   }).catch(function(err) {
     console.error(err);

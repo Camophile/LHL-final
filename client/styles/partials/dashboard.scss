@@ -37,15 +37,27 @@ body {
   }
 }
 
+$line-height: 2;
+$lines-to-show: 3;
+
 .panel-body {
-  background-color: #fafff9;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: $line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  line-height: $lines-to-show;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .shelter-grocery-pnl {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 201px;
+  max-width: 210px;
 }
 
 .panel-img {

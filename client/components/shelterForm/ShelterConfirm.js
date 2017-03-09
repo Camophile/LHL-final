@@ -3,16 +3,15 @@ import { connect } from 'react-redux';
 import { postDeliveredAt } from '../../actions/shelterConfirmActions';
 import { routeTo } from '../../routes';
 import moment from 'moment';
-import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class ShelterForm extends React.Component {
 
   onClick() {
     this.props.validateDelivery();
-    routeTo('/');
+    // routeTo('/');
     this.props.addFlashMessage({
       type: 'success',
-      text: 'Message received!'
+      text: 'Enjoy your food!'
     });
   }
 

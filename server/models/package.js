@@ -41,6 +41,7 @@ export function deliveryValidate(data) {
 export function getScheduledPackages() {
 
   return Package.forge({id: 1})
+
   .fetch({ withRelated: ['shelter', 'box', 'user', 'grocery'] })
   .then(function(packages) {
     return packages.toJSON();

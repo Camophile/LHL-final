@@ -1,4 +1,4 @@
-import { INCREMENT_DAIRY, DECREMENT_DAIRY, ALL_DAIRY } from '../actions/types';
+import { INCREMENT_DAIRY, DECREMENT_DAIRY, ALL_DAIRY, CLEAR_DAIRY } from '../actions/types';
 
 let initialState = {
   dairy: 0
@@ -12,6 +12,8 @@ export default (state = initialState.dairy, action) => {
       return state - 1
     case ALL_DAIRY:
       return state + action.payload;
+    case CLEAR_DAIRY:
+      return 0;
     default:
       return state;
   }

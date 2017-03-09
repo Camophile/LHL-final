@@ -32,10 +32,7 @@ onClick(data) {
     return boxes;
   }
 
-
   render() {
-    // const { store, shelter, distance } = this.props.store;
-
     return (
       <div className = "panel panel-default">
         <div className = "panel-heading">

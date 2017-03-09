@@ -1,4 +1,4 @@
-import { INCREMENT_PRODUCE, DECREMENT_PRODUCE, INCREMENT_DAIRY, DECREMENT_DAIRY, INCREMENT_BAKED_GOODS, DECREMENT_BAKED_GOODS, ALL_PRODUCE, ALL_DAIRY, ALL_BAKED_GOODS } from './types';
+import { INCREMENT_PRODUCE, DECREMENT_PRODUCE, INCREMENT_DAIRY, DECREMENT_DAIRY, INCREMENT_BAKED_GOODS, DECREMENT_BAKED_GOODS, ALL_PRODUCE, ALL_DAIRY, ALL_BAKED_GOODS, CLEAR_BAKED_GOODS, CLEAR_DAIRY, CLEAR_PRODUCE } from './types';
 
 export function incrementProduce() {
   console.log('action creator hit');
@@ -55,5 +55,26 @@ export function allBakedGoods(bakedGoods) {
     return {
         type: ALL_BAKED_GOODS,
         payload: bakedGoods
+    }
+}
+
+export function clearBakedGoods(bakedGoods) {
+    return {
+        type: CLEAR_BAKED_GOODS,
+        payload: bakedGoods
+    }
+}
+
+export function clearDairy(dairy) {
+    return {
+        type: CLEAR_DAIRY,
+        payload: dairy
+    }
+}
+
+export function clearProduce(produce) {
+    return {
+        type: CLEAR_PRODUCE,
+        payload: produce
     }
 }

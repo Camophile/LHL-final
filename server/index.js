@@ -18,12 +18,11 @@ import boxes from './routes/boxes';
 import shelter_form from './routes/ShelterForm';
 import notifications from './routes/notifications';
 
-import { getAllPackages } from './models/package';
+import { getScheduledPackages } from './models/package';
 import { getAllGroceries } from './models/grocery';
-import { getAllShelters } from './models/shelter'
+import { getAllShelters } from './models/shelter' //// deleted `deliveryValidate`
 import { getAllBoxes } from './models/box';
 import { getAllGroceryAvailabilities } from './models/groceryAvailability';
-import { deliveryValidate } from './models/ShelterForm';
 
 
 let app = express();
@@ -51,15 +50,18 @@ app.use(webpackMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler));
 
 app.get('/default_state.js', (req, res) => {
+  //TODO: Figure out the type of user and preload only necessary stuff
   Promise.all([
     getAllGroceries(),
     getAllShelters(),
-    getAllBoxes()
-  ]).then(([groceries, shelters, boxes]) => {
+    getAllBoxes(),
+    getScheduledPackages()
+  ]).then(([groceries, shelters, boxes, packages]) => {
     var state = {
       groceries,
       shelters,
-      boxes
+      boxes,
+      packages
     };
     res.set('Content-Type', 'application/javascript');
     res.send(`var __DEFAULT_STATE = ${JSON.stringify(state)};`);

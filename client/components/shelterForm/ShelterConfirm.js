@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { postDeliveredAt } from '../../actions/shelterConfirmActions';
 import { routeTo } from '../../routes';
-import TextFieldGroup from '../common/TextFieldGroup';
+import moment from 'moment';
 import { addFlashMessage } from '../../actions/flashMessages.js';
 
 class ShelterForm extends React.Component {
@@ -14,6 +14,25 @@ class ShelterForm extends React.Component {
       type: 'success',
       text: 'Message received!'
     });
+  }
+
+  fetchDeliveryData(infoType, businessType, deliveryID) {
+    let result;
+    businessType.forEach(business => {
+      if (business.id === deliveryId) {
+        result = business[infoType];
+      }
+    });
+    return result;
+  }
+
+  typeNum(type, boxArr) {
+    let typeArr = boxArr.filter(box => {
+      if(box.type === type) {
+        return box;
+      }
+    })
+    return typeArr.length;
   }
 
   render() {
@@ -36,12 +55,12 @@ class ShelterForm extends React.Component {
           </thead>
           <tbody>
             <tr scope="row">
-              <td>Charles Mingus</td>
-              <td>IGA</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>February 7, 2016 at 6:30 pm</td>
+              <td>{this.props.user.first_name} {this.props.user.last_name}</td>
+              <td>{this.props.grocery.name}</td>
+              <td>{this.typeNum('Produce', this.props.boxes)}</td>
+              <td>{this.typeNum('Baked Goods', this.props.boxes)}</td>
+              <td>{this.typeNum('Dairy', this.props.boxes)}</td>
+              <td>{this.props.expected_delivery}</td>
             </tr>
           </tbody>
         </table>
@@ -57,19 +76,33 @@ ShelterForm.propTypes = {
   addFlashMessage: React.PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  packages: state.packages
+function mapStateToProps(state) {
+
+  const expected_delivery = moment(state.packages.created_at).add(1.25, "hours").calendar();//.format('MMMM Do YYYY, h:mm:ss a')
+  const shelter = state.packages.shelter;
+  const grocery = state.packages.grocery;
+  const boxes = state.packages.box;
+  const user = state.packages.user;
+
+  return {
+    expected_delivery,
+    shelter,
+    grocery,
+    boxes,
+    user
+  };
 }
 
 function mapDispatchToProps(dispatch){
   return {
     validateDelivery: (data) => {
-      return dispatch(postDeliveredAt(data)).then(() => {
-        // alert('message sent');
-      });
+      return dispatch(postDeliveredAt(data))
     }
   }
 }
 
+export default connect(mapStateToProps, mapDispatchToProps)(ShelterForm);
 
-export default connect(null, mapDispatchToProps)(ShelterForm);
+
+
+

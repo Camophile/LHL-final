@@ -4,6 +4,9 @@ const Box = bookshelf.Model.extend({
   tableName: 'box',
   grocery: function() {
     return this.belongsTo(Grocery);
+  },
+  package: function() {
+    return this.belongsTo(Package);
   }
 });
 
